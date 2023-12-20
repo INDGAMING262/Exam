@@ -1,55 +1,55 @@
 Public Class Form1
- Dim opnd1, opnd2 As Double
- Dim op As String
- Private Sub btnoff_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) 
-Handles btnoff.Click
- End
- End Sub
- Private Sub btnC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) 
-Handles btnC.Click
- txtNum.Clear()
- op = ""
- End Sub
- Private Sub btn0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) 
-Handles btn0.Click, btn1.Click, btn2.Click, btn3.Click, btn4.Click, btn5.Click, btn6.Click, 
-btn7.Click, btn8.Click, btn9.Click
- txtNum.Text = txtNum.Text & sender.text
- End Sub
- Private Sub btnplus_Click(ByVal sender As System.Object, ByVal e As 
-System.EventArgs) Handles btnplus.Click, btnminus.Click, btnstar.Click, btnslash.Click
- If txtNum.Text = "" And sender.text = "-" Then
- txtNum.Text = "-"
- Else
- opnd1 = Val(txtNum.Text)
- txtNum.Text
- End If
- End Sub
- Private Sub btnequal_Click(ByVal sender As System.Object, ByVal e As 
-System.EventArgs) Handles btnequal.Click
- opnd2 = Val(txtNum.Text)
- Select Case op
- Case "+"
- txtNum.Text = opnd1 + opnd2
- Case "-"
- txtNum.Text = opnd1 - opnd2
-Case "*"
- txtNum.Text = opnd1 * opnd2
- Case "/"
- If opnd2 = 0 Then
- txtNum.Text = "Error !!! Division by ZERO!!!!!"
- Else
- txtNum.Text = opnd1 / opnd2
- End If
- End Select
- op = ""
- End Sub
- Private Sub btndot_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) 
-Handles btndot.Click
- If InStr(txtNum.Text, ".") > 0 Then
- Beep()
- Exit Sub
- Else
- txtNum.Text = txtNum.Text & "."
- End If
- End Sub
+    Dim op1, op2 As Double
+    Dim op As String
+    Private Sub B0_Click(sender As Object, e As EventArgs) Handles B0.Click, B1.Click, B2.Click, B3.Click, B4.Click, B5.Click, B6.Click, B7.Click, B8.Click, B9.Click
+        TextBox1.Text = TextBox1.Text & sender.text
+    End Sub
+
+    Private Sub Bpluse_Click(sender As Object, e As EventArgs) Handles Bpluse.Click, Bminus.Click, BMult.Click, Bdiv.Click
+        If TextBox1.Text = "" And sender.text = "-" Then
+            TextBox1.Text = "-"
+
+        Else
+            op1 = Val(TextBox1.Text)
+            TextBox1.Text = ""
+            op = sender.text
+        End If
+    End Sub
+
+    Private Sub Bequal_Click(sender As Object, e As EventArgs) Handles Bequal.Click
+        op2 = Val(TextBox1.Text)
+        Select Case op
+            Case "+"
+                TextBox1.Text = op1 + op2
+            Case "-"
+                TextBox1.Text = op1 - op2
+            Case "*"
+                TextBox1.Text = op1 * op2
+            Case "/"
+                If (op2 = 0) Then
+                    TextBox1.Text = "Error div by 0"
+                Else
+                    TextBox1.Text = op1 / op2
+                End If
+        End Select
+        op = ""
+    End Sub
+
+    Private Sub Bdot_Click(sender As Object, e As EventArgs) Handles Bdot.Click
+        If InStr(TextBox1.Text, ".") > 0 Then
+            Beep()
+            Exit Sub
+        Else
+            TextBox1.Text = TextBox1.Text & "."
+        End If
+    End Sub
+
+    Private Sub BC_Click(sender As Object, e As EventArgs) Handles BC.Click
+        TextBox1.Clear()
+        op = ""
+    End Sub
+
+    Private Sub Off_Click(sender As Object, e As EventArgs) Handles Off.Click
+        End
+    End Sub
 End Class
