@@ -77,7 +77,7 @@ System.EventArgs) Handles Button5.Click
  GroupBox3.Visible = True
  QuestionLbl.Text = i & "." & q(i)
  If attempted(i) = False Then
- GroupBox2.Enabled = True
+ GroupBox3.Enabled = True
  SubmitBtn.Enabled = True
  End If
  End Sub
