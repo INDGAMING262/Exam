@@ -1,0 +1,63 @@
+Public Class Form1
+ Private Function isfound(ByVal str As String) As Boolean
+ For Each item In ComboBox1.Items
+ If str = item Then
+ Return True
+ End If
+ Next
+ Return False
+ End Function
+ Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button1.Click
+ Dim str As String = InputBox("Enter the item name", "add new name")
+ If str <> "" Then
+ If isfound(str) Then
+ MessageBox.Show("Item already exist", "add new item")
+ Else
+ ComboBox1.Items.Add(str)
+ MessageBox.Show("Item inserted ", "add new item")
+ End If
+ End If
+ End Sub
+ Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button2.Click
+ Dim str As String = InputBox("Enter the item name", "remove item")
+ If str <> " " Then
+ If isfound(str) Then
+ ComboBox1.Items.Remove(str)
+ MessageBox.Show("Items removed", "remove item")
+ Else
+ MessageBox.Show("Item does not exits ", "remove item")
+ End If
+ End If
+ End Sub
+ Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button3.Click
+ Dim str As String = InputBox("Enter the item name", "search item")
+ If str <> " " Then
+ If isfound(str) Then
+
+ComboBox1.SelectedItem = str
+ MessageBox.Show("Items is found at position" & ComboBox1.SelectedIndex + 1, 
+"search item")
+ Else
+ MessageBox.Show("Item does not exits ", "search item")
+ End If
+ End If
+ End Sub
+ Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button4.Click
+ ComboBox1.SelectedItem = Nothing
+ ComboBox1.Items.Clear()
+ End Sub
+ Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button5.Click
+ End
+ End Sub
+End Class
+
+
+
+
+
+

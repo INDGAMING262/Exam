@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace ConsoleApplication1
+{
+ class Program
+ {
+ static void Main(string[] args)
+ {
+ int numb, i, f = 0;
+ Console.WriteLine("Enter a number:");
+ numb = int.Parse(Console.ReadLine());
+ for (i = 1; i <= numb; i++)
+ {
+ if (numb % i == 0)
+ {
+ f++;
+ }
+ }
+ if (f == 2)
+ {
+ Console.WriteLine("Number is prime");
+ Console.ReadLine();
+ }
+ else
+ {
+ Console.WriteLine("Number is not prime");
+ int factor;
+ Console.WriteLine("Factors are ");
+ for (factor = 1; factor <= numb; factor++)
+ {
+ if (numb % factor == 0)
+ {
+ Console.Write(factor + " ");
+ }
+ }
+ Console.ReadLine();
+ }
+ }
+ }
+}

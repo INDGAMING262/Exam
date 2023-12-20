@@ -1,0 +1,136 @@
+Public Class Form1
+ Dim q(6) As String
+ Dim ans(6, 5) As String
+ Dim attempted(6) As Boolean
+ Dim cans(6) As Integer
+ Dim score As Integer = 0
+ Dim i As Integer = 0
+ Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) 
+Handles MyBase.Load
+ Dim j As Integer
+ For j = 1 To 5
+ attempted(j) = False
+ Next
+ GroupBox1.Visible = False
+ q(1) = "WHO IS THE FATHER OF COMPUTER ?"
+ ans(1, 1) = "CHARLES BABBAGE"
+ ans(1, 2) = "GEORGE BOOL"
+ ans(1, 3) = "TIM BERNERS LEE"
+ ans(1, 4) = "BLAISE PASCAL"
+ cans(1) = 1
+ q(2) = "THE COMPONENETS USED IN FIRST GENERATION COMPUTERS ?"
+ ans(2, 1) = "TRANSISTORS"
+ ans(2, 2) = "VACCUM TUBE"
+ ans(2, 3) = "IC"
+ ans(2, 4) = "VLSI"
+ cans(2) = 2
+ q(3) = "BASE OF OCTAL NUMBER SYSTEM IS ?"
+ ans(3, 1) = "2"
+ ans(3, 2) = "10"
+ ans(3, 3) = "16"
+ ans(3, 4) = "8"
+ cans(3) = 4
+ q(4) = "EXAMPLE FOR IMPACT PRINTER ?"
+ ans(4, 1) = "LASER PRINTER"
+ ans(4, 2) = "INKJET PRINTER"
+ ans(4, 3) = "DOT MATRIX PRINTER"
+ ans(4, 4) = "PLOTTER "
+ cans(4) = 3
+ q(5) = "KEYWORD SHORTCUT TO SELECT THE ENTIRE DOCUMENT IN MS 
+WORD"
+ans(5, 1) = "CTRL+V"
+ ans(5, 2) = "CTRL+A"
+ ans(5, 3) = "CTRL+C"
+ ans(5, 4) = "CTRL+K"
+ cans(5) = 2
+ Dim k
+ For k = 1 To 4
+ ComboBox1.Items.Add(ans(5, k))
+ Next
+ End Sub
+ Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button1.Click, Button2.Click, Button3.Click, Button4.Click
+ GroupBox1.Visible = True
+ GroupBox2.Visible = True
+ GroupBox3.Visible = False
+ GroupBox1.Text = sender.Text
+ i = CInt(Mid(sender.Text, 2, 1))
+ QuestionLbl.Text = i & "." & q(i)
+ RadioButton1.Text = ans(i, 1)
+ RadioButton2.Text = ans(i, 2)
+ RadioButton3.Text = ans(i, 3)
+ RadioButton4.Text = ans(i, 4)
+ If attempted(i) = False Then
+ GroupBox2.Enabled = True
+ SubmitBtn.Enabled = True
+ End If
+ End Sub
+ Private Sub scoreBtn_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles ScoreBtn.Click
+ MsgBox("Your score is :" & score)
+ End Sub
+ Private Sub Button5_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button5.Click
+ i = 5
+ GroupBox1.Visible = True
+ GroupBox2.Visible = False
+ GroupBox3.Visible = True
+ QuestionLbl.Text = i & "." & q(i)
+ If attempted(i) = False Then
+ GroupBox2.Enabled = True
+ SubmitBtn.Enabled = True
+ End If
+ End Sub
+ Private Sub ExitBtn_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles ExitBtn.Click
+End
+ End Sub
+ Private Sub Restartbtn_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles RestartBtn.Click
+ score = 0
+ SubmitBtn.Enabled = True
+ GroupBox1.Visible = False
+ Dim j As Integer
+ For j = 1 To 5
+ attempted(j) = False
+ Next
+ If i < 5 Then
+ GroupBox2.Enabled = True
+ Else
+ GroupBox3.Enabled = True
+ End If
+ ComboBox1.Items.Clear()
+ End Sub
+ Private Sub SubmitBtn_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles SubmitBtn.Click
+ attempted(i) = True
+ SubmitBtn.Enabled = False
+ Dim os As Integer
+ If GroupBox2.Visible = True Then
+ If RadioButton1.Checked Then os = 1
+ If RadioButton2.Checked Then os = 2
+ If RadioButton3.Checked Then os = 3
+ If RadioButton4.Checked Then os = 4
+ ElseIf GroupBox3.Visible = True Then
+ If ComboBox1.SelectedIndex <> -1 Then
+ os = ComboBox1.SelectedIndex + 1
+ End If
+ End If
+ If cans(i) = os Then
+ score = score + 20
+ End If
+ If i <> 5 Then
+ If attempted(i) = True Then
+ GroupBox2.Enabled = False
+ Else
+ GroupBox2.Enabled = True
+ End If
+ Else
+ If attempted(i) = True Then
+ GroupBox3.Enabled = False
+ Else
+ GroupBox3.Enabled = True
+ End If
+End If
+ End Sub
+End Class

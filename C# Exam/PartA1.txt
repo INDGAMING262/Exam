@@ -1,0 +1,23 @@
+Public Class Form1
+ Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button1.Click
+ Dim i As Integer
+ Dim f As Long = 1
+ If TextBox1.Text = "" Then
+ MessageBox.Show("error:Input is blank", "Find factorial")
+ ElseIf Not IsNumeric(TextBox1.Text) Then
+ MessageBox.Show("error:Input should be number", "Find factorial")
+ ElseIf Val(TextBox1.Text) < 0 Then
+ MessageBox.Show("error:Input cannot be a negative", "Find factorial")
+ Else
+ For i = 1 To TextBox1.Text
+ f *= i
+ Next
+ Label2.Text = "Factorial is " & f
+ End If
+ End Sub
+ Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button2.Click
+ End
+ End Sub
+End Class

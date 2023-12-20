@@ -1,0 +1,48 @@
+Public Class Form1
+ Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button1.Click
+ If validateInput() Then
+ Dim a, b, fno, sno, g, l As Integer
+ fno = TextBox1.Text
+ sno = TextBox2.Text
+ a = fno
+ b = sno
+ While a <> b
+ If a > b Then a = a - b
+ If b > a Then b = b - a
+ End While
+ g = a
+ l = (fno * sno) / g
+ Label3.Text = "GCD is " & g & vbCrLf & "LCM is " & l
+ End If
+ End Sub
+ Private Function validateInput() As Boolean
+ Dim inputOK As Boolean = True
+ If TextBox1.Text = "" Then
+ Label3.Text = "Error:First number cannot be empty"
+ inputOK = False
+ ElseIf Not IsNumeric(TextBox1.Text) Then
+ Label3.Text = "Error:First number is non numeric"
+ inputOK = False
+ ElseIf Val(TextBox1.Text) < 0 Then
+ Label3.Text = "Error:First number cannot be negative"
+ inputOK = False
+ End If
+ If TextBox2.Text = "" Then
+ Label3.Text = "Error:Second number cannot be empty"
+ inputOK = False
+ ElseIf Not IsNumeric(TextBox2.Text) Then
+ Label3.Text = "Error:Second number is non numeric"
+ inputOK = False
+ ElseIf Val(TextBox2.Text) < 0 Then
+ Label3.Text = "Error:Second number cannot be negative"
+ inputOK = False
+ End If
+ Return inputOK
+
+End Function
+ Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As 
+System.EventArgs) Handles Button2.Click
+ End
+ End Sub
+End Class
