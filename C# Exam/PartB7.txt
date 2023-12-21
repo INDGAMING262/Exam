@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Text;
+using System.Text.RegularExpressions;
+namespace WebApplication4
+{
+ public partial class WebForm1 : System.Web.UI.Page
+ {
+ protected void Page_Load(object sender, EventArgs e)
+ {
+ }
+ protected void Button1_Click(object sender, EventArgs e)
+ {
+ String str1 = TextBox1.Text;
+ String str2 = TextBox2.Text;
+ StringBuilder sb = new StringBuilder();
+ Regex reg = new Regex(str2, RegexOptions.IgnoreCase);
+ foreach (String s in reg.Split(str1))
+ {
+ sb.Append(s);
+ }
+ TextBox3.Text = sb.ToString();
+ }
+ protected void Button2_Click(object sender, EventArgs e)
+ {
+ String str1 = TextBox1.Text;
+ String str2 = TextBox2.Text;
+ StringBuilder sb = new StringBuilder();
+ int i = 0;
+ foreach (Char c in str1)
+ {
+ sb.Append(c);
+ while (i < str2.Length)
+ {
+ sb.Append(str2[i]);
+ i++;
+ break;
+ }
+ }
+ TextBox3.Text = sb.ToString();
+ }
+ protected void Button3_Click(object sender, EventArgs e)
+ {
+ TextBox1.Text = String.Empty;
+ TextBox2.Text = String.Empty;
+ TextBox3.Text = String.Empty;
+ TextBox3.Focus();
+ }
+ }
+}
